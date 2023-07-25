@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="600.0" prefWidth="400.0">
+         <children>
+            <Label alignment="TOP_CENTER" prefHeight="20.0" prefWidth="400.0" text="Miejsce zamieszkania" textAlignment="CENTER">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Franklin Gothic Medium" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="findCityLiving" onKeyPressed="#setOnKeyPressed" promptText="Wyszukaj miasto">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Franklin Gothic Book" size="14.0" />
+               </font>
+            </TextField>
+            <ComboBox fx:id="chooseLocalization" prefWidth="200.0" promptText="Wybierz lokalizację">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="100.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </ComboBox>
+            <Button fx:id="checkWeatherCityLiving" mnemonicParsing="false" onAction="#checkWeatherCityLivingAction" prefHeight="38.4" prefWidth="200.0" text="Sprawdź pogodę">
+               <font>
+                  <Font name="Franklin Gothic Book" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="100.0" top="15.0" />
+               </VBox.margin>
+            </Button>
+            <Label fx:id="cityLiving" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="410.0" textAlignment="CENTER">
+               <font>
+                  <Font name="Franklin Gothic Book" size="28.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="20.0" top="20.0" />
+               </VBox.margin>
+            </Label>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="weatherStateImage1" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <effect>
+                        <ColorAdjust brightness="-0.3" />
+                     </effect>
+                  </ImageView>
+                  <Label fx:id="weatherState1" alignment="BASELINE_CENTER" prefHeight="79.0" prefWidth="290.0" wrapText="true">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Franklin Gothic Book" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox layoutX="20.0" layoutY="123.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="weatherStateImage2" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <effect>
+                        <ColorAdjust brightness="-0.3" />
+                     </effect>
+                  </ImageView>
+                  <Label fx:id="weatherState2" alignment="BASELINE_CENTER" prefHeight="79.0" prefWidth="290.0" wrapText="true">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Franklin Gothic Book" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="233.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="weatherStateImage3" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <effect>
+                        <ColorAdjust brightness="-0.3" />
+                     </effect>
+                  </ImageView>
+                  <Label fx:id="weatherState3" alignment="BASELINE_CENTER" prefHeight="79.0" prefWidth="290.0" wrapText="true">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Franklin Gothic Book" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="233.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="weatherStateImage4" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <effect>
+                        <ColorAdjust brightness="-0.3" />
+                     </effect>
+                  </ImageView>
+                  <Label fx:id="weatherState4" alignment="BASELINE_CENTER" prefHeight="79.0" prefWidth="290.0" wrapText="true">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Franklin Gothic Book" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="433.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="weatherStateImage5" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <effect>
+                        <ColorAdjust brightness="-0.3" />
+                     </effect>
+                  </ImageView>
+                  <Label fx:id="weatherState5" alignment="BASELINE_CENTER" prefHeight="79.0" prefWidth="290.0" wrapText="true">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Franklin Gothic Book" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+      <Separator orientation="VERTICAL" prefHeight="200.0" />
+      <VBox prefHeight="600.0" prefWidth="400.0">
+         <children>
+            <Label alignment="TOP_CENTER" prefHeight="16.0" prefWidth="400.0" text="Miejsce docelowe" textAlignment="CENTER">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Franklin Gothic Medium" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="findCityDestination" onKeyPressed="#setOnKeyPressedDestination" promptText="Wyszukaj miasto">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Franklin Gothic Book" size="14.0" />
+               </font>
+            </TextField>
+            <ComboBox fx:id="chooseLocalizationOfDestination" prefWidth="200.0" promptText="Wybierz lokalizację">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="100.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </ComboBox>
+            <Button fx:id="checkWeatherCityDestination" mnemonicParsing="false" onAction="#checkWeatherCityDestinationAction" prefHeight="38.4" prefWidth="200.0" text="Sprawdź pogodę">
+               <font>
+                  <Font name="Franklin Gothic Book" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="100.0" top="15.0" />
+               </VBox.margin>
+            </Button>
+            <Label fx:id="cityDestination" alignment="CENTER" contentDisplay="CENTER" prefHeight="6.0" prefWidth="398.0" textAlignment="CENTER">
+               <font>
+                  <Font name="Franklin Gothic Book" size="28.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="20.0" top="20.0" />
+               </VBox.margin>
+            </Label>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="weatherStateImageDestination1" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <effect>
+                        <ColorAdjust brightness="-0.3" />
+                     </effect>
+                  </ImageView>
+                  <Label fx:id="weatherStateDestination1" alignment="BASELINE_CENTER" prefHeight="79.0" prefWidth="290.0">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Franklin Gothic Book" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="112.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="weatherStateImageDestination2" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <effect>
+                        <ColorAdjust brightness="-0.3" />
+                     </effect>
+                  </ImageView>
+                  <Label fx:id="weatherStateDestination2" alignment="BASELINE_CENTER" prefHeight="79.0" prefWidth="290.0">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Franklin Gothic Book" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="212.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="weatherStateImageDestination3" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <effect>
+                        <ColorAdjust brightness="-0.3" />
+                     </effect>
+                  </ImageView>
+                  <Label fx:id="weatherStateDestination3" alignment="BASELINE_CENTER" prefHeight="79.0" prefWidth="290.0">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Franklin Gothic Book" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="312.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="weatherStateImageDestination4" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <effect>
+                        <ColorAdjust brightness="-0.3" />
+                     </effect>
+                  </ImageView>
+                  <Label fx:id="weatherStateDestination4" alignment="BASELINE_CENTER" prefHeight="79.0" prefWidth="290.0">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Franklin Gothic Book" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="412.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="weatherStateImageDestination5" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <effect>
+                        <ColorAdjust brightness="-0.3" />
+                     </effect>
+                  </ImageView>
+                  <Label fx:id="weatherStateDestination5" alignment="BASELINE_CENTER" prefHeight="79.0" prefWidth="290.0">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Franklin Gothic Book" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>
