@@ -17,9 +17,7 @@ import javafx.scene.input.KeyEvent;
 
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class MainViewController implements FxmlDefinedController, Initializable {
     private final String fxmlName;
@@ -171,10 +169,11 @@ public class MainViewController implements FxmlDefinedController, Initializable 
 
         WeatherDataExtractor weatherDataExtractor = new WeatherDataExtractor(cityName, latitude, longitude);
         Map<LocalDate, List<Double>> weatherDataByDates = weatherDataExtractor.extractWeatherData(latitude, longitude);
+        Map<LocalDate, List<Double>> sortedWeatherDataByDates = sortByDates(weatherDataByDates);
 
-        int count = 5;
+        int count = 0;
 
-        for (Map.Entry<LocalDate, List<Double>> entry : weatherDataByDates.entrySet()) {
+        for (Map.Entry<LocalDate, List<Double>> entry : sortedWeatherDataByDates.entrySet()) {
             LocalDate date = entry.getKey();
             List<Double> temperatures = entry.getValue();
 
@@ -207,7 +206,7 @@ public class MainViewController implements FxmlDefinedController, Initializable 
                         break;
             }
 
-            count--;
+            count++;
         }
 
     }
@@ -311,10 +310,11 @@ public class MainViewController implements FxmlDefinedController, Initializable 
 
         WeatherDataExtractor weatherDataExtractor = new WeatherDataExtractor(cityName, latitude, longitude);
         Map<LocalDate, List<Double>> weatherDataByDates = weatherDataExtractor.extractWeatherData(latitude, longitude);
+        Map<LocalDate, List<Double>> sortedWeatherDataByDates = sortByDates(weatherDataByDates);
 
-        int count = 5;
+        int count = 0;
 
-        for (Map.Entry<LocalDate, List<Double>> entry : weatherDataByDates.entrySet()) {
+        for (Map.Entry<LocalDate, List<Double>> entry : sortedWeatherDataByDates.entrySet()) {
             LocalDate date = entry.getKey();
             List<Double> temperatures = entry.getValue();
 
@@ -347,9 +347,24 @@ public class MainViewController implements FxmlDefinedController, Initializable 
                     break;
             }
 
-            count--;
+            count++;
         }
 
+    }
+
+    public static Map<LocalDate, List<Double>> sortByDates(Map<LocalDate, List<Double>> unsortedMap) {
+        // Create a custom comparator to compare LocalDate objects
+        Comparator<LocalDate> dateComparator = LocalDate::compareTo;
+
+        // Use a TreeMap with the custom comparator to automatically sort the entries based on keys (dates)
+        TreeMap<LocalDate, List<Double>> sortedMap = new TreeMap<>(dateComparator);
+        sortedMap.putAll(unsortedMap);
+
+        // Copy the sorted entries to a new LinkedHashMap to preserve insertion order
+        LinkedHashMap<LocalDate, List<Double>> sortedByDatesMap = new LinkedHashMap<>();
+        sortedMap.forEach((key, value) -> sortedByDatesMap.put(key, value));
+
+        return sortedByDatesMap;
     }
 
     private String capitalizeFirstLetter(String cityName) {
