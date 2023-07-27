@@ -63,55 +63,6 @@ public class OpenWeatherMapClient implements WeatherClient {
         return filteredWeatherList;
     }
 
-    private List<Weather> getWeatherForNextFiveDays(List<Weather> weatherList) {
-        // Group weather data by date
-        Map<String, List<Weather>> weatherByDate = groupWeatherDataByDate(weatherList);
-
-        // Get the dates for the next five days
-        List<String> nextFiveDays = getNextFiveDays(weatherByDate);
-
-        // Get weather data for each day in the next five days
-        List<Weather> nextFiveDaysWeather = new ArrayList<>();
-        for (String date : nextFiveDays) {
-            List<Weather> weatherForDate = weatherByDate.get(date);
-            if (weatherForDate != null && !weatherForDate.isEmpty()) {
-                nextFiveDaysWeather.addAll(weatherForDate);
-            }
-        }
-
-        return nextFiveDaysWeather;
-    }
-
-    private Map<String, List<Weather>> groupWeatherDataByDate(List<Weather> weatherList) {
-        Map<String, List<Weather>> weatherByDate = new HashMap<>();
-
-        for (Weather data : weatherList) {
-            String date = formatDate(data.getDate()); // Pass the timestamp directly
-            weatherByDate.putIfAbsent(date, new ArrayList<>());
-            weatherByDate.get(date).add(data);
-        }
-
-        return weatherByDate;
-    }
-    private static List<String> getNextFiveDays(Map<String, List<Weather>> weatherByDate) {
-        // Get today's date and create a list to store the next five days
-        List<String> nextFiveDays = new ArrayList<>();
-        Calendar calendar = Calendar.getInstance();
-
-        // Loop to find the next five days (excluding today)
-        while (nextFiveDays.size() < 5) {
-            calendar.add(Calendar.DAY_OF_YEAR, 1);
-            String date = formatDate(calendar.getTimeInMillis());
-            if (weatherByDate.containsKey(date)) {
-                nextFiveDays.add(date);
-            }
-        }
-
-        return nextFiveDays;
-    }
-
-
-
     private static String formatDate(long timestamp) {
         Date date = new Date(timestamp);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -141,29 +92,6 @@ public class OpenWeatherMapClient implements WeatherClient {
         }
 
         return dataOfLocations;
-    }
-
-   public String getCountry(String cityName) {
-       StringBuilder response = null;
-       try {
-           response = getResponse("http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=5&appid=" + API_KEY);
-       } catch (IOException e) {
-           e.printStackTrace();
-       }
-       Gson gson = new Gson();
-        Location[] locations = gson.fromJson(response.toString(), Location[].class);
-        String country = locations[0].getCountry();
-        return country;
-    }
-
-    private static double[] getLocationLatLon(String cityName) throws IOException {
-        StringBuilder response = getResponse("http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=5&appid=" + API_KEY);
-
-        Gson gson = new Gson();
-        Location[] locations = gson.fromJson(response.toString(), Location[].class);
-        double lat = locations[0].getLat();
-        double lon = locations[0].getLon();
-        return new double[]{lat, lon};
     }
 
     private static StringBuilder getResponse(String cityName) throws IOException {
