@@ -1,9 +1,5 @@
 package WeatherApp;
 
-import WeatherApp.views.ViewFactory;
-import javafx.application.Application;
-import javafx.stage.Stage;
-
 
 
 
