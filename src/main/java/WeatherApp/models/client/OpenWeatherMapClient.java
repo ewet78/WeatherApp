@@ -14,12 +14,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class OpenWeatherMapClient implements WeatherClient {
 
-    private static final String API_KEY = "d39fff73dc8b11dcd2815c231d636586";
+    private static final String API_KEY = "...";
 
     @Override
     public List<Weather> getWeather(String cityName, double lat, double lon) {
@@ -61,12 +60,6 @@ public class OpenWeatherMapClient implements WeatherClient {
         }
 
         return filteredWeatherList;
-    }
-
-    private static String formatDate(long timestamp) {
-        Date date = new Date(timestamp);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        return sdf.format(date);
     }
 
     public ObservableList<DataOfLocations> getLocations(String cityName) {

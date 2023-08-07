@@ -13,7 +13,6 @@ public class WeatherService {
     }
 
     public List<Weather> getWeather(String cityName, double lat, double lon) {
-        OpenWeatherMapClient openWeatherMapClient = new OpenWeatherMapClient();
         return weatherClient.getWeather(cityName, lat, lon);
     }
 }

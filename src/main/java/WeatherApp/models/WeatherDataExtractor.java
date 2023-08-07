@@ -2,26 +2,23 @@ package WeatherApp.models;
 
 import WeatherApp.models.client.OpenWeatherMapClient;
 
-import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class WeatherDataExtractor {
-    private static OpenWeatherMapClient openWeatherMapClient = new OpenWeatherMapClient();
+    private static WeatherService weatherService = new WeatherService(new OpenWeatherMapClient());
     private static String cityName;
     private static List<Weather> weatherList;
 
     public WeatherDataExtractor(String cityName, double lat, double lon) {
         this.cityName = cityName;
-        weatherList = openWeatherMapClient.getWeather(cityName, lat, lon);
+        weatherList = weatherService.getWeather(cityName, lat, lon);
     }
 
     public Map<LocalDate, List<Double>> extractWeatherData(double lat, double lon) {
-        weatherList = openWeatherMapClient.getWeather(cityName, lat, lon);
+        weatherList = weatherService.getWeather(cityName, lat, lon);
 
         LocalDate today = LocalDate.now();
         int count = 0;
@@ -69,13 +66,5 @@ public class WeatherDataExtractor {
         }
 
         return maxMinTemperaturesByDate;
-    }
-
-
-
-    private String formatDate(long timestamp) {
-        Date date = new Date(timestamp * 1000);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        return sdf.format(date);
     }
 }

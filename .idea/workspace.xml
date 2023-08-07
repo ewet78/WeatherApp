@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9b90bc96-d460-478c-8131-d37acd1b8ba1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/WeatherApp/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WeatherApp/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/WeatherApp/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WeatherApp/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WeatherApp/models/WeatherDataExtractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WeatherApp/models/WeatherDataExtractor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WeatherApp/models/WeatherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WeatherApp/models/WeatherService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WeatherApp/models/client/OpenWeatherMapClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WeatherApp/models/client/OpenWeatherMapClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
