@@ -20,9 +20,6 @@ public class WeatherDataExtractor {
     public Map<LocalDate, List<Double>> extractWeatherData(double lat, double lon) {
         weatherList = weatherService.getWeather(cityName, lat, lon);
 
-        LocalDate today = LocalDate.now();
-        int count = 0;
-        double sumOfTemp = 0.0;
         LocalDate weatherDate = null;
 
         // Create the map to store temperatures for each date
@@ -34,13 +31,6 @@ public class WeatherDataExtractor {
 
             // Convert Instant to LocalDate using system default timezone
             weatherDate = instant.atZone(ZoneId.systemDefault()).toLocalDate();
-
-            if (weatherDate.getYear() == today.getYear() &&
-                    weatherDate.getMonth() == today.getMonth() &&
-                    weatherDate.getDayOfMonth() == today.getDayOfMonth()) {
-                sumOfTemp += weather.getMain().getTemp();
-                count++;
-            }
 
             // Add temperature to the list for the current date
             List<Double> weatherTemp = temperaturesByDate.getOrDefault(weatherDate, new ArrayList<>());

@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.*;
@@ -114,7 +115,7 @@ public class MainViewController implements FxmlDefinedController, Initializable 
         this.fxmlName = fxmlName;
     }
     @FXML
-    void checkWeatherCityLivingAction() throws InterruptedException {
+    void checkWeatherCityLivingAction() throws InterruptedException, IOException {
         DataOfLocations selectedLocation = chooseLocalization.getValue();
         double latitude = selectedLocation.getLat();
         double longitude = selectedLocation.getLon();
@@ -255,7 +256,7 @@ public class MainViewController implements FxmlDefinedController, Initializable 
 
 
     @FXML
-    void checkWeatherCityDestinationAction() {
+    void checkWeatherCityDestinationAction() throws IOException {
         DataOfLocations selectedLocation = chooseLocalizationOfDestination.getValue();
         double latitude = selectedLocation.getLat();
         double longitude = selectedLocation.getLon();
