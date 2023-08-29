@@ -1,22 +1,25 @@
 package WeatherApp.models.client;
 
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
 public class OpenWeatherMapIconDownloader {
 
-    public  String iconCode;
+    public  String iconCode = "10n";
 
-    public OpenWeatherMapIconDownloader(String iconCode) {
+    public String iconUrl = "http://openweathermap.org/img/wn/" + iconCode + ".png";
+
+    public String destinationPath = "C:\\Users\\Ewelina\\Documents\\Java\\WeatherApp\\src\\main\\resources\\icons\\" + iconCode + ".png";
+
+    public OpenWeatherMapIconDownloader(String iconCode) throws IOException {
         this.iconCode = iconCode;
-
-        String iconUrl = "http://openweathermap.org/img/wn/" + iconCode + ".png";
-
-        downloadIcon(iconUrl, "C:\\Users\\Ewelina\\Documents\\Java\\WeatherApp\\src\\main\\resources\\icons\\" + iconCode + ".png");
+        downloadIcon();
     }
 
-    private static void downloadIcon(String iconUrl, String destinationPath) {
+    public String downloadIcon() throws IOException {
+        boolean downloadSuccessful = false;
         try {
             URL url = new URL(iconUrl);
             InputStream inputStream = url.openStream();
@@ -33,9 +36,22 @@ public class OpenWeatherMapIconDownloader {
             inputStream.close();
             outputStream.close();
 
-            System.out.println("Weather icon downloaded successfully!");
+            downloadSuccessful = true;
+
         } catch (Exception e) {
             e.printStackTrace();
+            throw e;
         }
+        if (downloadSuccessful){
+            return "Weather icon downloaded successfully!";
+        } else return "Cannot download icon!";
+    }
+
+    public void setIconUrl(String iconUrl) {
+        this.iconUrl = iconUrl;
+    }
+
+    public String getIconUrl() {
+        return iconUrl;
     }
 }

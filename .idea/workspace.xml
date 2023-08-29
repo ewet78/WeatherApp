@@ -6,10 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="9b90bc96-d460-478c-8131-d37acd1b8ba1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/WeatherApp/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WeatherApp/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WeatherApp/controllers/FxmlDefinedController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WeatherApp/controllers/FxmlDefinedController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WeatherApp/controllers/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WeatherApp/controllers/MainViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/WeatherApp/models/WeatherDataExtractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WeatherApp/models/WeatherDataExtractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/WeatherApp/models/WeatherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WeatherApp/models/WeatherService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/WeatherApp/models/client/OpenWeatherMapClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WeatherApp/models/client/OpenWeatherMapClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WeatherApp/models/client/OpenWeatherMapIconDownloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WeatherApp/models/client/OpenWeatherMapIconDownloader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,13 +37,15 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_opened_file_path": "C:/Users/Ewelina/Documents/Java/WeatherApp",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.2"
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -49,24 +53,69 @@
       <recent name="C:\Users\Ewelina\Documents\Java\WeatherApp\src\main\resources\views\fxml" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="WeatherApp.Main" />
+  <component name="RunManager" selected="JUnit.All in WeatherApp">
+    <configuration name="All in WeatherApp (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WeatherApp" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\Ewelina\Downloads\openjfx-17.0.7_windows-x64_bin-sdk (1)\javafx-sdk-17.0.7\lib&quot; --add-modules javafx.controls,javafx.fxml " />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in WeatherApp (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="WeatherApp" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in WeatherApp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="WeatherApp" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OpenWeatherMapClientTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="WeatherApp" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="WeatherApp.*" />
+          <option name="PATTERN" value="WeatherApp.models.client.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="WeatherApp.models.client" />
+      <option name="MAIN_CLASS_NAME" value="WeatherApp.models.client.OpenWeatherMapClientTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OpenWeatherMapClientTest.shouldReturnListOf5DataOfLocationsObjects" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="WeatherApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="WeatherApp.models.client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="WeatherApp.models.client" />
+      <option name="MAIN_CLASS_NAME" value="WeatherApp.models.client.OpenWeatherMapClientTest" />
+      <option name="METHOD_NAME" value="shouldReturnListOf5DataOfLocationsObjects" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.All in WeatherApp" />
+        <item itemvalue="JUnit.OpenWeatherMapClientTest" />
+        <item itemvalue="JUnit.All in WeatherApp (2)" />
+        <item itemvalue="JUnit.All in WeatherApp (1)" />
+        <item itemvalue="JUnit.OpenWeatherMapClientTest.shouldReturnListOf5DataOfLocationsObjects" />
       </list>
     </recent_temporary>
   </component>
@@ -80,5 +129,25 @@
       <updated>1689774723692</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.net.UnknownHostException" package="java.net" />
+          <option name="timeStamp" value="8" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="openWeatherMapIconDownloader.iconUrl" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/WeatherApp$All_in_WeatherApp.ic" NAME="All in WeatherApp Coverage Results" MODIFIED="1693322825130" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/WeatherApp$All_in_WeatherApp__2_.ic" NAME="All in WeatherApp (2) Coverage Results" MODIFIED="1693322702454" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/WeatherApp$All_in_WeatherApp__1_.ic" NAME="All in WeatherApp (1) Coverage Results" MODIFIED="1693322554960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

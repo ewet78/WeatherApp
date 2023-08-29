@@ -29,12 +29,12 @@ public class OpenWeatherMapClient implements WeatherClient {
 
             Gson gson = new Gson();
             WeatherResponseWrapper weatherResponse = gson.fromJson(response.toString(), WeatherResponseWrapper.class);
-
             if (weatherResponse == null || weatherResponse.getList() == null) {
                 throw new Exception("Weather data is null or empty.");
             }
 
             long currentTimeInSeconds = System.currentTimeMillis() / 1000;
+
 
             for (Weather data : weatherResponse.getList()) {
                 if (data.getDate() >= currentTimeInSeconds) { // Compare timestamps in seconds
