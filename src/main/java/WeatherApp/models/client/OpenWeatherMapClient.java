@@ -15,49 +15,82 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.*;
+import java.util.function.Function;
 
 public class OpenWeatherMapClient implements WeatherClient {
 
     private static final String API_KEY = "...";
 
+    private Function<String, StringBuilder> responseProvider;
+
+    public void setResponseProvider(Function<String, StringBuilder> responseProvider) {
+        this.responseProvider = responseProvider;
+    }
+
     @Override
     public List<Weather> getWeather(String cityName, double lat, double lon) {
         List<Weather> filteredWeatherList = new ArrayList<>();
-
+        StringBuilder response;
         try {
-            StringBuilder response = getResponse("https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&cnt=40&appid=" + API_KEY + "&units=metric&lang=pl");
+            if (responseProvider != null) {
+                String apiUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&cnt=40&appid=" + API_KEY + "&units=metric&lang=pl";
+                response = responseProvider.apply(apiUrl);
+                Gson gson = new Gson();
+                WeatherResponseWrapper weatherResponse = gson.fromJson(response.toString(), WeatherResponseWrapper.class);
+                if (weatherResponse == null || weatherResponse.getList() == null) {
+                    System.out.println("Weather data is null or empty!");
 
-            Gson gson = new Gson();
-            WeatherResponseWrapper weatherResponse = gson.fromJson(response.toString(), WeatherResponseWrapper.class);
-            if (weatherResponse == null || weatherResponse.getList() == null) {
-                throw new Exception("Weather data is null or empty.");
-            }
+                } else {
+                    long currentTimeInSeconds = 1693234800 / 1000;
 
-            long currentTimeInSeconds = System.currentTimeMillis() / 1000;
+                    for (Weather data : weatherResponse.getList()) {
+                        if (data.getDate() >= currentTimeInSeconds) { // Compare timestamps in seconds
+                            Weather weather = new Weather(
+                                    data.getWeather(),
+                                    data.getMain(),
+                                    data.getDate() * 1000, // Convert from seconds to milliseconds
+                                    data.getDt_txt());
+
+                            filteredWeatherList.add(weather);
+                        }
+                    }
+                }
+
+            } else {
+                response = getResponse("https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&cnt=40&appid=" + API_KEY + "&units=metric&lang=pl");
+
+                Gson gson = new Gson();
+                WeatherResponseWrapper weatherResponse = gson.fromJson(response.toString(), WeatherResponseWrapper.class);
+                if (weatherResponse == null || weatherResponse.getList() == null) {
+                    System.out.println("Weather data is null or empty!");
+                }
+
+                long currentTimeInSeconds = System.currentTimeMillis() / 1000;
 
 
-            for (Weather data : weatherResponse.getList()) {
-                if (data.getDate() >= currentTimeInSeconds) { // Compare timestamps in seconds
-                    Weather weather = new Weather(
-                            data.getWeather(),
-                            data.getMain(),
-                            data.getDate() * 1000, // Convert from seconds to milliseconds
-                            data.getDt_txt());
+                for (Weather data : weatherResponse.getList()) {
+                    if (data.getDate() >= currentTimeInSeconds) { // Compare timestamps in seconds
+                        Weather weather = new Weather(
+                                data.getWeather(),
+                                data.getMain(),
+                                data.getDate() * 1000, // Convert from seconds to milliseconds
+                                data.getDt_txt());
 
-                    filteredWeatherList.add(weather);
+                        filteredWeatherList.add(weather);
+                    }
                 }
             }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-            return Collections.emptyList();
-        } catch (JsonSyntaxException e) {
-            e.printStackTrace();
-            return Collections.emptyList();
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("List is empty!");
-        }
+            } catch(IOException e){
+                e.printStackTrace();
+                return Collections.emptyList();
+            } catch(JsonSyntaxException e){
+                e.printStackTrace();
+                return Collections.emptyList();
+            } catch(Exception e){
+                e.printStackTrace();
+                System.out.println("List is empty!");
+            }
 
         return filteredWeatherList;
     }
@@ -65,8 +98,13 @@ public class OpenWeatherMapClient implements WeatherClient {
     public ObservableList<DataOfLocations> getLocations(String cityName) {
         StringBuilder response = null;
         try {
-            response = getResponse("http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=5&appid=" + API_KEY);
-        } catch (IOException e) {
+            if (responseProvider != null) {
+                String apiUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=5&appid=" + API_KEY;
+                response = responseProvider.apply(apiUrl);
+            } else {
+                response = getResponse("http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=5&appid=" + API_KEY);
+            }
+            } catch (IOException e) {
             System.out.println("Lack of such localization");
             e.printStackTrace();
         }
@@ -87,19 +125,32 @@ public class OpenWeatherMapClient implements WeatherClient {
         return dataOfLocations;
     }
 
-    private static StringBuilder getResponse(String cityName) throws IOException {
-        URL url = new URL(cityName);
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("GET");
+    public StringBuilder getResponse(String cityName) throws IOException {
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-        StringBuilder response = new StringBuilder();
+        if (responseProvider != null) {
+            return responseProvider.apply(cityName);
+        } else {
 
-        String line;
-        while ((line = reader.readLine()) != null) {
-            response.append(line);
+            URL url = new URL(cityName);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+
+            int responseCode = connection.getResponseCode();
+
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                StringBuilder response = new StringBuilder();
+
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    response.append(line);
+                }
+                reader.close();
+                return response;
+            } else {
+                System.out.println("HTTP request failed with response code: " + responseCode);
+                return new StringBuilder();
+            }
         }
-        reader.close();
-        return response;
     }
 }
